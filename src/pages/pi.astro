@@ -1,12 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import yaml from 'js-yaml';
 import { join } from 'path';
+import { placeholderSvg, initials } from '../utils/placeholder';
 
 const pi = yaml.load(
   readFileSync(join(process.cwd(), 'src/data/pi.yaml'), 'utf-8')
 ) as any;
+
+function resolvePhoto(photo: string, name: string, width: number, height: number): string {
+  if (!photo) return placeholderSvg(initials(name), width, height);
+  const rel = photo.startsWith('/') ? photo.slice(1) : photo;
+  const full = join(process.cwd(), 'public', rel);
+  return existsSync(full) ? photo : placeholderSvg(initials(name), width, height);
+}
+
+const piPhoto = resolvePhoto(pi.photo, pi.name, 208, 256);
 ---
 <Layout title={`${pi.name} — MLR Lab`} active="pi">
   <div class="max-w-5xl mx-auto px-6 py-12">
@@ -14,10 +24,9 @@ const pi = yaml.load(
     <div class="flex flex-col sm:flex-row gap-10 mb-14">
       <div class="flex-shrink-0">
         <img
-          src={pi.photo}
+          src={piPhoto}
           alt={pi.name}
           class="w-52 h-64 object-cover bg-gray-100 dark:bg-gray-800"
-          onerror="this.style.background=''"
         />
       </div>
       <div class="flex-1">
