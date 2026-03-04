@@ -1,0 +1,48 @@
+---
+interface Links {
+  website?: string;
+  scholar?: string;
+  github?: string;
+  email?: string;
+  linkedin?: string;
+}
+
+interface Props {
+  name: string;
+  role: string;
+  photo: string;
+  bio: string;
+  links?: Links;
+  current_position?: string;
+  isAlumni?: boolean;
+}
+
+const { name, role, photo, bio, links = {}, current_position, isAlumni = false } = Astro.props;
+---
+<div class={`flex gap-4 p-4 rounded-lg border transition-shadow ${
+  isAlumni
+    ? 'border-gray-100 bg-gray-50'
+    : 'border-gray-200 bg-white shadow-sm hover:shadow-md'
+}`}>
+  <img
+    src={photo}
+    alt={name}
+    class="w-20 h-20 rounded-full object-cover flex-shrink-0 border-2 border-gray-100"
+    onerror="this.style.display='none'"
+  />
+  <div class="min-w-0">
+    <h3 class="font-semibold text-gray-900 text-sm">{name}</h3>
+    <p class="text-xs text-primary font-medium mt-0.5">{role}</p>
+    {current_position && (
+      <p class="text-xs text-gray-500 mt-0.5 italic">Now: {current_position}</p>
+    )}
+    <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">{bio}</p>
+    <div class="flex gap-3 mt-2 text-xs">
+      {links.website && <a href={links.website} target="_blank" rel="noopener" class="text-primary hover:underline">Website</a>}
+      {links.scholar && <a href={links.scholar} target="_blank" rel="noopener" class="text-primary hover:underline">Scholar</a>}
+      {links.github && <a href={links.github} target="_blank" rel="noopener" class="text-primary hover:underline">GitHub</a>}
+      {links.email && <a href={`mailto:${links.email}`} class="text-primary hover:underline">Email</a>}
+      {links.linkedin && <a href={links.linkedin} target="_blank" rel="noopener" class="text-primary hover:underline">LinkedIn</a>}
+    </div>
+  </div>
+</div>

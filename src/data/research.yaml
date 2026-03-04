@@ -1,0 +1,33 @@
+overview:
+  - "My research journey spans both academia and industry, unified by a central interest in
+    low-dimensional principles of intelligence — how complex behaviors and representations
+    can emerge from compact, structured models."
+  - "We currently work at the intersection of machine learning, computer vision, and robotics,
+    developing theory-driven algorithms for 3D scene understanding, dexterous robot manipulation,
+    and embodied AI. Our research combines neural representations with physical grounding,
+    enabling systems to perceive, reason, and act in the real world."
+  - "Historically, our work has included deep learning theory, sparse coding & inverse problems,
+    and visual restoration — areas in which we remain engaged. In parallel, industry collaborations
+    have opened new directions in geometry learning, video generation, and large-scale model training."
+  - "Our latest efforts are organized into four thematic areas, outlined below."
+
+areas:
+  - title: "3D Scene Understanding"
+    description: "We develop neural representations for 3D scenes, including NeRF-based methods and implicit surface learning. Our goal is to enable robots to reason about geometry, appearance, and semantics from raw visual observations."
+    image: "/research/scene-understanding.jpg"
+    tags: ["3D Vision", "NeRF", "Implicit Representations", "Scene Graphs"]
+
+  - title: "Robot Manipulation"
+    description: "We study how robots can learn to grasp and manipulate objects, including deformable objects and tools. We combine deep learning with physics simulation to develop generalizable manipulation policies."
+    image: "/research/manipulation.jpg"
+    tags: ["Grasping", "Dexterous Manipulation", "Sim-to-Real", "Deformable Objects"]
+
+  - title: "Embodied AI"
+    description: "We build agents that can perceive, plan, and act in complex environments. Our work integrates language, vision, and action, enabling robots to follow natural language instructions in real-world settings."
+    image: "/research/embodied.jpg"
+    tags: ["Language Grounding", "Visual Navigation", "LLMs for Robotics", "Instruction Following"]
+
+  - title: "Generative Models for Robotics"
+    description: "We apply diffusion models, VAEs, and other generative approaches to robot learning problems, including data augmentation, policy learning, and world models for planning."
+    image: "/research/generative.jpg"
+    tags: ["Diffusion Models", "World Models", "Data Augmentation", "Policy Learning"]

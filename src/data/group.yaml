@@ -1,0 +1,60 @@
+name: "Machine Learning & Robotics Lab"
+short_name: "MLR Lab"
+tagline: "Advancing the Frontiers of Embodied Intelligence"
+description: |
+  We are a research group at Carnegie Mellon University's School of Computer Science,
+  working at the intersection of machine learning, computer vision, and robotics.
+  Our mission is to develop intelligent systems that can perceive, reason, and act
+  in the physical world.
+
+  Our lab combines theoretical foundations with practical applications, collaborating
+  closely with industry and other academic groups to tackle fundamental challenges
+  in embodied AI.
+pi_name: "Dr. Jane Smith"
+institution: "Carnegie Mellon University"
+department: "School of Computer Science"
+contact_email: "mlrlab@cs.cmu.edu"
+twitter: "https://twitter.com/mlrlab_cmu"
+github: "https://github.com/mlrlab-cmu"
+
+hero_links:
+  - label: "Meet the Team"
+    href: "/team"
+    variant: "primary"
+  - label: "Publications"
+    href: "/publications"
+    variant: "outline"
+  - label: "Join Us"
+    href: "/opening"
+    variant: "outline"
+
+news_categories:
+  - key: research
+    label: Research
+    icon: i-ph-flask-bold
+  - key: awards
+    label: Awards
+    icon: i-ph-trophy-bold
+  - key: events
+    label: Events
+    icon: i-ph-calendar-bold
+  - key: talks
+    label: Talks
+    icon: i-ph-microphone-stage-bold
+
+team_stats:
+  - icon: i-ph-graduation-cap-bold
+    value: "3+"
+    label: "Ph.D. Fellowships (NSF, NDSEG, etc.)"
+  - icon: i-ph-star-bold
+    value: "5+"
+    label: "Best Paper Awards (NeurIPS, CVPR, CoRL)"
+  - icon: i-ph-trophy-bold
+    value: "4+"
+    label: "Competition Prizes at CVPR, ICCV"
+  - icon: i-ph-buildings-bold
+    value: "2+"
+    label: "Alumni in Tenure-Track Faculty Positions"
+  - icon: i-ph-briefcase-bold
+    value: "10+"
+    label: "Alumni as Research Scientists in Industry"

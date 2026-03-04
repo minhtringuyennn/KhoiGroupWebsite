@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MemberCard from '../components/MemberCard.astro';
+import { readFileSync } from 'fs';
+import yaml from 'js-yaml';
+import { join } from 'path';
+
+const members = yaml.load(
+  readFileSync(join(process.cwd(), 'src/data/members.yaml'), 'utf-8')
+) as any[];
+
+const current = members.filter((m: any) => m.status === 'current');
+const alumni  = members.filter((m: any) => m.status === 'alumni');
+
+const pi      = current.filter((m: any) => m.role === 'Principal Investigator');
+const postdoc = current.filter((m: any) => m.role.toLowerCase().includes('postdoc'));
+const phd     = current.filter((m: any) => m.role.toLowerCase().includes('phd'));
+const ms      = current.filter((m: any) => m.role.toLowerCase().includes('ms'));
+const other   = current.filter(
+  (m: any) =>
+    !m.role.toLowerCase().includes('principal') &&
+    !m.role.toLowerCase().includes('postdoc') &&
+    !m.role.toLowerCase().includes('phd') &&
+    !m.role.toLowerCase().includes('ms')
+);
+---
+<Layout title="Members — MLR Lab" active="members">
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-2xl font-bold text-gray-900 mb-8">Lab Members</h1>
+
+    {pi.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Principal Investigator</h2>
+        <div class="grid grid-cols-1 gap-4">
+          {pi.map((m: any) => <MemberCard {...m} />)}
+        </div>
+      </section>
+    )}
+
+    {postdoc.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Postdoctoral Researchers</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {postdoc.map((m: any) => <MemberCard {...m} />)}
+        </div>
+      </section>
+    )}
+
+    {phd.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">PhD Students</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {phd.map((m: any) => <MemberCard {...m} />)}
+        </div>
+      </section>
+    )}
+
+    {ms.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">MS Students</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {ms.map((m: any) => <MemberCard {...m} />)}
+        </div>
+      </section>
+    )}
+
+    {other.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Other Members</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {other.map((m: any) => <MemberCard {...m} />)}
+        </div>
+      </section>
+    )}
+
+    {alumni.length > 0 && (
+      <section class="mb-8">
+        <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Alumni</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {alumni.map((m: any) => <MemberCard {...m} isAlumni={true} />)}
+        </div>
+      </section>
+    )}
+  </div>
+</Layout>

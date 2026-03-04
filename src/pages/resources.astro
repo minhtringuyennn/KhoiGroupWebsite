@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readFileSync } from 'fs';
+import yaml from 'js-yaml';
+import { join } from 'path';
+
+const data = yaml.load(
+  readFileSync(join(process.cwd(), 'src/data/resources.yaml'), 'utf-8')
+) as any;
+
+const tutorials: any[]  = data.tutorials   ?? [];
+const openCalls: any[]  = data.open_calls  ?? [];
+const datasets: any[]   = data.datasets    ?? [];
+const courses           = data.courses     ?? {};
+const codes             = data.codes       ?? {};
+const codesList: any[]  = codes.list       ?? [];
+const coursesList: any[]= courses.list     ?? [];
+---
+<Layout title="Resources — MLR Lab" active="resources">
+
+  <div class="relative bg-gray-900 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-gray-900/40"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-6 py-14">
+      <h1 class="text-3xl sm:text-4xl font-bold text-white mb-3">Resources</h1>
+      <p class="text-gray-300 text-sm sm:text-base max-w-lg leading-relaxed">
+        Open source code, datasets, and tools for advancing machine learning and
+        computer vision research. Explore our curated collection of resource artifacts,
+        including reproducible code, pre-trained models, and benchmark datasets —
+        freely available to support collaboration and innovation in the broader research community.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-6 py-12 space-y-14">
+
+    <section>
+      <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100 text-center mb-1">Selected Tutorials</h2>
+      <div class="flex justify-center mb-6"><div class="w-8 h-0.5 bg-primary"></div></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {tutorials.map((t: any) => (
+          <div class="rounded overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm">
+            <div class={`h-36 bg-gradient-to-br ${t.gradient} flex flex-col justify-end p-5`}>
+              <h3 class="text-white font-bold text-base leading-snug">{t.title}</h3>
+              <p class="text-white/70 text-xs mt-1">{t.subtitle}</p>
+            </div>
+            <div class="px-5 py-3 bg-white dark:bg-gray-900 flex items-center justify-between">
+              <span class="text-xs text-gray-500 dark:text-gray-400">{t.venue}</span>
+              <a href={t.href} class="text-xs font-semibold text-primary hover:underline">Learn More →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100 text-center mb-1">Open Calls for Papers / Participation</h2>
+      <div class="flex justify-center mb-6"><div class="w-8 h-0.5 bg-primary"></div></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {openCalls.map((c: any) => (
+          <div class="rounded overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm">
+            <div class={`h-28 bg-gradient-to-br ${c.gradient} flex flex-col justify-end p-5`}>
+              <h3 class="text-white font-bold text-sm leading-snug">{c.title}</h3>
+            </div>
+            <div class="px-5 py-3 bg-white dark:bg-gray-900 flex items-center justify-between">
+              <span class="text-xs text-gray-500 dark:text-gray-400">{c.subtitle}</span>
+              <a href={c.href} class="text-xs font-semibold text-primary hover:underline">Learn More →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100 text-center mb-1">Datasets</h2>
+      <div class="flex justify-center mb-6"><div class="w-8 h-0.5 bg-primary"></div></div>
+      <div class="space-y-3">
+        {datasets.map((d: any) => (
+          <div class="flex gap-4 items-start p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded">
+            <span class="i-ph-database-bold w-5 h-5 text-primary flex-shrink-0 mt-0.5"></span>
+            <div>
+              <a href={d.href} class="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-primary transition-colors">{d.name}</a>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{d.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100 text-center mb-1">Courses</h2>
+      <div class="flex justify-center mb-4"><div class="w-8 h-0.5 bg-primary"></div></div>
+      <p class="text-center text-xs text-gray-500 dark:text-gray-500 uppercase tracking-widest mb-5">
+        At {courses.institution}
+      </p>
+      <div class="space-y-3">
+        {coursesList.map((c: any) => (
+          <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded">
+            <span class="i-ph-chalkboard-teacher-bold w-5 h-5 text-primary flex-shrink-0"></span>
+            <div class="flex-1 min-w-0">
+              <a href={c.href} class="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-primary transition-colors">
+                {c.code}: {c.title}
+              </a>
+              <p class="text-xs text-gray-400 dark:text-gray-600 mt-0.5">{c.term}</p>
+            </div>
+            <a href={c.href} class="text-xs font-semibold text-primary hover:underline flex-shrink-0">Syllabus →</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100 text-center mb-1">Codes</h2>
+      <div class="flex justify-center mb-6"><div class="w-8 h-0.5 bg-primary"></div></div>
+      <div class="space-y-3">
+        {codesList.map((r: any) => (
+          <div class="flex gap-4 items-start p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded">
+            <span class="i-ph-github-logo-bold w-5 h-5 text-gray-400 dark:text-gray-600 flex-shrink-0 mt-0.5"></span>
+            <div>
+              <a href={r.href} target="_blank" rel="noopener" class="text-sm font-semibold text-primary hover:underline">{r.name}</a>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{r.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="text-center mt-6 text-xs text-gray-400 dark:text-gray-600">
+        All open-source repositories at
+        <a href={codes.github_org} target="_blank" rel="noopener" class="text-primary hover:underline ml-1">{codes.github_org}</a>
+      </p>
+    </section>
+
+  </div>
+</Layout>

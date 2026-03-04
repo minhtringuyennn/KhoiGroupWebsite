@@ -1,0 +1,70 @@
+# Current Members
+- name: "Dr. Jane Smith"
+  category: "pi"
+  role: "Principal Investigator"
+  photo: "/members/pi.jpg"
+  bio: "Assistant Professor at CMU. Previously postdoc at MIT CSAIL. Research interests: 3D scene understanding, robot manipulation, embodied AI."
+  links:
+    website: "https://jsmith.cs.cmu.edu"
+    scholar: "https://scholar.google.com/citations?user=EXAMPLE"
+    email: "jsmith@cs.cmu.edu"
+  status: "current"
+
+- name: "Alex Chen"
+  category: "phd"
+  role: "PhD Student (3rd year)"
+  photo: "/members/alex.jpg"
+  bio: "Research focus: diffusion models for robotic grasping. Previously at Tsinghua University."
+  links:
+    scholar: "#"
+    github: "https://github.com/alexchen"
+  status: "current"
+
+- name: "Maria Rodriguez"
+  category: "phd"
+  role: "PhD Student (2nd year)"
+  photo: "/members/maria.jpg"
+  bio: "Working on neural scene representations and sim-to-real transfer for robotic manipulation."
+  links:
+    website: "#"
+    github: "https://github.com/mariarodriguez"
+  status: "current"
+
+- name: "Kevin Park"
+  category: "phd"
+  role: "PhD Student (1st year)"
+  photo: "/members/kevin.jpg"
+  bio: "Interests: reinforcement learning for dexterous manipulation. BS from KAIST."
+  links:
+    github: "https://github.com/kevinpark"
+  status: "current"
+
+- name: "Sarah Liu"
+  category: "ms"
+  role: "MS Student"
+  photo: "/members/sarah.jpg"
+  bio: "Working on 3D object detection pipelines for robotic applications."
+  links:
+    linkedin: "#"
+  status: "current"
+
+# Alumni
+- name: "Dr. James Brown"
+  category: "phd"
+  role: "PhD Alumnus"
+  photo: "/members/james.jpg"
+  bio: "PhD 2024. Thesis: Safe Motion Planning with Semantic Scene Understanding."
+  links:
+    website: "#"
+  status: "alumni"
+  current_position: "Research Scientist, Google DeepMind"
+
+- name: "Dr. Emily Wang"
+  category: "postdoc"
+  role: "Postdoc Alumna"
+  photo: "/members/emily.jpg"
+  bio: "Postdoc 2022–2024. Research on generative models for robotic learning."
+  links:
+    website: "#"
+  status: "alumni"
+  current_position: "Assistant Professor, University of Toronto"

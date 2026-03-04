@@ -1,0 +1,55 @@
+at_a_glance:
+  - "Dr. Smith is an Associate Professor at CMU, working on cutting-edge AI research."
+  - "Research focuses on ML, computer vision, robotics, and embodied AI."
+  - "We admit 1–2 new PhD students per year via the SCS PhD program."
+  - "New admits typically join in Fall; exceptional candidates may join in Spring."
+  - "Full research assistantships guaranteed for all admitted PhD students."
+  - "Strong track record: alumni in tenure-track faculty and industry research positions."
+  - "Active industry collaborations providing internship and employment opportunities."
+
+expectations:
+  - q: "Strong ML / CV background with solid mathematical foundations"
+    a: "You should have a strong grasp of machine learning fundamentals, linear algebra, probability theory, and optimization. Experience with deep learning architectures is essential."
+  - q: "Experience with robotics, 3D vision, or generative models (preferred)"
+    a: "Prior research or project experience in these areas is highly valued. Publications at top venues in these areas are a strong plus."
+  - q: "Publications at top venues (NeurIPS, ICML, CVPR, ICCV, ICRA, RSS, etc.)"
+    a: "Competitive applicants typically have at least one publication or preprint at a top-tier venue. We value research quality over quantity."
+  - q: "Solid Python + PyTorch skills; familiarity with robot simulators is a plus"
+    a: "You should be comfortable implementing and debugging ML models in PyTorch. Experience with MuJoCo, IsaacGym, or similar simulators is beneficial."
+
+provisions:
+  - q: "Full research assistantship (RA) funding"
+    a: "All admitted PhD students receive full tuition coverage and a competitive stipend through research assistantship funding for the duration of their PhD."
+  - q: "Access to state-of-the-art compute resources"
+    a: "Students have access to our lab GPU cluster as well as CMU-wide computing resources including PSC bridges and cloud credits through academic programs."
+  - q: "Mentorship and career development"
+    a: "We provide hands-on mentorship for research, writing, and presentation skills. Students are supported in their academic job search or industry transitions."
+  - q: "Strong industry connections and internship opportunities"
+    a: "Our active collaborations with Google, Meta, Microsoft, and others provide excellent internship and full-time placement opportunities for our students."
+  - q: "Vibrant research community at CMU"
+    a: "CMU offers one of the world's premier AI research environments with numerous seminars, workshops, and collaboration opportunities across departments."
+
+about_institution:
+  title: "About Carnegie Mellon University"
+  description: |
+    Carnegie Mellon University is a global research university consistently ranked among
+    the top institutions in computer science and engineering. Located in Pittsburgh, PA,
+    CMU's School of Computer Science is home to world-leading research in AI, robotics,
+    machine learning, and computer vision.
+  detail: |
+    The MLR Lab is part of the Robotics Institute and the Computer Science Department at CMU,
+    providing a uniquely collaborative environment at the intersection of machine learning and robotics.
+
+institutes:
+  - name: "CMU Robotics Institute"
+    desc: "One of the largest robotics research centers in the world."
+    href: "#"
+  - name: "Machine Learning Department"
+    desc: "The world's first ML department, home to foundational AI research."
+    href: "#"
+  - name: "Language Technologies Institute"
+    desc: "Leading research in NLP, conversational AI, and multimodal systems."
+    href: "#"
+  - name: "Pittsburgh Supercomputing Center"
+    desc: "Access to NSF-funded HPC resources for large-scale experiments."
+    href: "#"

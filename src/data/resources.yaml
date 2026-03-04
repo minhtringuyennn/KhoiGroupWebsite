@@ -1,0 +1,61 @@
+tutorials:
+  - title: "Diffusion Models for Decision Making"
+    subtitle: "From Theory to Practice"
+    venue: "NeurIPS 2024 Tutorial"
+    href: "#"
+    gradient: "from-orange-500 to-red-600"
+  - title: "Neural Scene Representations"
+    subtitle: "NeRF and Beyond"
+    venue: "CVPR 2024 Tutorial"
+    href: "#"
+    gradient: "from-gray-700 to-gray-900"
+
+open_calls:
+  - title: "Workshop on Dexterous Manipulation"
+    subtitle: "NeurIPS 2025 Workshop — Call for Papers"
+    href: "#"
+    gradient: "from-blue-500 to-indigo-700"
+  - title: "Embodied AI Challenge @ CVPR"
+    subtitle: "Challenge submission open until May 2025"
+    href: "#"
+    gradient: "from-teal-500 to-cyan-700"
+
+datasets:
+  - name: "DexGrasp-1M"
+    desc: "Large-scale dexterous grasping dataset with 1M+ grasps across 5000 objects."
+    href: "#"
+  - name: "SceneFlow-Bench"
+    desc: "Benchmark for 3D scene flow estimation from monocular video."
+    href: "#"
+  - name: "RoboSim-Env"
+    desc: "Simulation environments and assets for robotic manipulation research."
+    href: "#"
+
+courses:
+  institution: "Carnegie Mellon University"
+  list:
+    - code: "16-831"
+      title: "Introduction to Robot Learning"
+      term: "Fall 2024"
+      href: "#"
+    - code: "16-745"
+      title: "Optimal Control and Reinforcement Learning"
+      term: "Spring 2024"
+      href: "#"
+    - code: "11-785"
+      title: "Introduction to Deep Learning (Guest Lectures)"
+      term: "Fall 2023"
+      href: "#"
+
+codes:
+  github_org: "https://github.com/mlrlab-cmu"
+  list:
+    - name: "DiffGrasp"
+      desc: "Diffusion-based dexterous grasping with language guidance"
+      href: "https://github.com/mlrlab-cmu/diffgrasp"
+    - name: "SceneFlow"
+      desc: "Consistent 3D scene representations from monocular video"
+      href: "https://github.com/mlrlab-cmu/sceneflow"
+    - name: "NeRF-Grasp"
+      desc: "6-DoF grasp detection from Neural Radiance Fields"
+      href: "https://github.com/mlrlab-cmu/nerf-grasp"

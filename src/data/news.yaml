@@ -1,0 +1,79 @@
+- date: "Feb 2025"
+  year: 2025
+  category: research
+  items:
+    - "3 CVPR'25 papers (scene understanding + neural grasping + embodied nav) accepted"
+    - "1 IEEE TPAMI journal paper on implicit representations accepted"
+
+- date: "Jan 2025"
+  year: 2025
+  category: research
+  items:
+    - "4 ICLR'25 papers (diffusion policy + world models + NeRF grasp + LLM planning) accepted"
+    - "1 ICRA'25 paper on deformable object manipulation accepted"
+
+- date: "Dec 2024"
+  year: 2024
+  category: awards
+  items:
+    - "Prof. Smith receives NSF CAREER Award — congratulations!"
+    - "Best Paper Award at CoRL 2024 for DiffGrasp"
+
+- date: "Nov 2024"
+  year: 2024
+  category: events
+  items:
+    - "Prof. Smith gives invited talk at MIT Robotics Seminar"
+    - "Lab presents 3 papers at CoRL 2024"
+
+- date: "Sep 2024"
+  year: 2024
+  category: research
+  items:
+    - "3 NeurIPS'24 papers accepted — great work by the whole team!"
+    - "Welcome to new PhD student Kevin Park!"
+
+- date: "Jun 2024"
+  year: 2024
+  category: research
+  items:
+    - "2 CVPR'24 papers accepted (SceneFlow + RoboGen)"
+
+- date: "May 2024"
+  year: 2024
+  category: events
+  items:
+    - "James Brown successfully defends his PhD dissertation — congrats Dr. Brown! Now at Google DeepMind"
+    - "Organizing Workshop on Learning for Robot Manipulation at ICRA 2024"
+
+- date: "Jan 2024"
+  year: 2024
+  category: research
+  items:
+    - "NeRF-Grasp accepted at ICLR 2024"
+
+- date: "Dec 2023"
+  year: 2023
+  category: awards
+  items:
+    - "Received the Amazon Research Award"
+
+- date: "Sep 2023"
+  year: 2023
+  category: events
+  items:
+    - "Welcome to new PhD student Maria Rodriguez!"
+
+- date: "Jun 2023"
+  year: 2023
+  category: research
+  items:
+    - "GROOT accepted at NeurIPS 2023"
+    - "Perceive-Predict-Plan accepted at ICRA 2023"
+
+- date: "Mar 2023"
+  year: 2023
+  category: talks
+  items:
+    - "Prof. Smith gives keynote at ICLR 2023 Workshop on Robot Learning"
+    - "Invited talk at Stanford AI Lab"

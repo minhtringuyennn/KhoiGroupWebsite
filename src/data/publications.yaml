@@ -1,0 +1,67 @@
+- title: "DiffGrasp: Diffusion-Based Dexterous Grasping with Language Guidance"
+  authors: "A. Chen, J. Smith, B. Johnson, C. Williams"
+  venue: "NeurIPS 2024"
+  year: 2024
+  topics: ["Robot Manipulation", "Generative Models"]
+  links:
+    pdf: "#"
+    arxiv: "https://arxiv.org/abs/2024.00001"
+    code: "https://github.com/mlrlab-cmu/diffgrasp"
+    project: "#"
+
+- title: "SceneFlow: Learning Consistent 3D Scene Representations from Monocular Video"
+  authors: "J. Smith, D. Lee, E. Park"
+  venue: "CVPR 2024"
+  year: 2024
+  topics: ["3D Vision", "Scene Understanding"]
+  links:
+    pdf: "#"
+    arxiv: "https://arxiv.org/abs/2024.00002"
+    code: "https://github.com/mlrlab-cmu/sceneflow"
+
+- title: "RoboGen: Towards Unleashing Infinite Data for Automated Robot Learning"
+  authors: "Y. Wang, J. Smith, F. Chen, G. Kim"
+  venue: "CVPR 2024"
+  year: 2024
+  topics: ["Robot Learning", "Data Augmentation"]
+  links:
+    pdf: "#"
+    arxiv: "https://arxiv.org/abs/2024.00003"
+
+- title: "NeRF-Grasp: 6-DoF Grasp Detection from Neural Radiance Fields"
+  authors: "J. Smith, G. Kim"
+  venue: "ICLR 2024"
+  year: 2024
+  topics: ["3D Vision", "Robot Manipulation"]
+  links:
+    pdf: "#"
+    arxiv: "https://arxiv.org/abs/2023.00004"
+    code: "https://github.com/mlrlab-cmu/nerf-grasp"
+
+- title: "GROOT: Learning to Manipulate Deformable Objects with Generalizable Representations"
+  authors: "H. Liu, J. Smith, I. Martinez"
+  venue: "NeurIPS 2023"
+  year: 2023
+  topics: ["Robot Manipulation", "Representation Learning"]
+  links:
+    pdf: "#"
+    arxiv: "https://arxiv.org/abs/2023.00005"
+
+- title: "Perceive, Predict, and Plan: Safe Motion Planning Through Interpretable Semantic Representations"
+  authors: "J. Smith, J. Brown"
+  venue: "ICRA 2023"
+  year: 2023
+  topics: ["Scene Understanding", "Embodied AI"]
+  links:
+    pdf: "#"
+    arxiv: "https://arxiv.org/abs/2023.00006"
+
+- title: "Neural Descriptor Fields: SE(3)-Equivariant Object Representations for Manipulation"
+  authors: "J. Smith, K. Park, L. Chen"
+  venue: "ICRA 2022"
+  year: 2022
+  topics: ["Robot Manipulation", "Representation Learning"]
+  links:
+    pdf: "#"
+    arxiv: "https://arxiv.org/abs/2022.00001"
+    code: "https://github.com/mlrlab-cmu/neural-descriptor-fields"

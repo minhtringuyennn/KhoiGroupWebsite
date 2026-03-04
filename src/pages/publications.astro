@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readFileSync } from 'fs';
+import yaml from 'js-yaml';
+import { join } from 'path';
+
+const publications = yaml.load(
+  readFileSync(join(process.cwd(), 'src/data/publications.yaml'), 'utf-8')
+) as any[];
+
+const years = [...new Set(publications.map((p: any) => p.year as number))].sort((a, b) => b - a);
+
+const allAuthors = [...new Set(
+  publications.flatMap((p: any) => (p.authors as string).split(',').map((a: string) => a.trim()))
+)].sort() as string[];
+
+const allVenues = [...new Set(
+  publications.map((p: any) => (p.venue as string).replace(/\s+\d{4}$/, '').trim())
+)].sort() as string[];
+
+const allTopics = [...new Set(
+  publications.flatMap((p: any) => (p.topics ?? []) as string[])
+)].sort() as string[];
+
+const pubs = publications.map((p: any) => ({
+  ...p,
+  venueShort: (p.venue as string).replace(/\s+\d{4}$/, '').trim(),
+  authorsAttr: (p.authors as string).split(',').map((a: string) => a.trim()).join('|'),
+  topicsAttr: ((p.topics ?? []) as string[]).join('|'),
+  topicsList: (p.topics ?? []) as string[],
+}));
+
+const byYear: Record<number, typeof pubs> = {};
+for (const p of pubs) {
+  if (!byYear[p.year]) byYear[p.year] = [];
+  byYear[p.year].push(p);
+}
+---
+<Layout title="Publications — MLR Lab" active="publications">
+  <div class="max-w-4xl mx-auto px-6 py-12">
+
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-3">Publications</h1>
+    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mb-8">
+      Below are a list of recent and selected papers (* denotes lab student or mentee).
+      Full list on <a href="https://scholar.google.com" target="_blank" rel="noopener" class="text-primary hover:underline">Google Scholar</a>.
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+      <select id="filter-author" class="px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded focus:outline-none focus:border-primary transition-colors cursor-pointer">
+        <option value="">Select Author</option>
+        {allAuthors.map(a => (<option value={a}>{a}</option>))}
+      </select>
+
+      <select id="filter-year" class="px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded focus:outline-none focus:border-primary transition-colors cursor-pointer">
+        <option value="">Select Year</option>
+        {years.map(y => (<option value={String(y)}>{y}</option>))}
+      </select>
+
+      <select id="filter-venue" class="px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded focus:outline-none focus:border-primary transition-colors cursor-pointer">
+        <option value="">Select Venue</option>
+        {allVenues.map(v => (<option value={v}>{v}</option>))}
+      </select>
+
+      <select id="filter-topic" class="px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded focus:outline-none focus:border-primary transition-colors cursor-pointer">
+        <option value="">Select Topics</option>
+        {allTopics.map(t => (<option value={t}>{t}</option>))}
+      </select>
+    </div>
+
+    <div class="flex items-center justify-between mb-8">
+      <p id="pub-count" class="text-xs text-gray-400 dark:text-gray-600"></p>
+      <button id="clear-filters" class="hidden text-xs text-primary hover:underline">Clear filters</button>
+    </div>
+
+    <div class="space-y-8">
+      {years.map(year => (
+        <div class="year-block" data-year={String(year)}>
+          <h3 id={`year-${year}`} class="text-sm font-semibold text-gray-400 dark:text-gray-600 uppercase tracking-wider mb-3 pb-1 border-b border-gray-100 dark:border-gray-800">
+            {year}
+          </h3>
+          <ul class="space-y-5">
+            {byYear[year].map(pub => (
+              <li
+                class="pub-item flex gap-3"
+                data-year={String(pub.year)}
+                data-venue={pub.venueShort}
+                data-authors={pub.authorsAttr}
+                data-topics={pub.topicsAttr}
+              >
+                <div class="w-0.5 bg-primary rounded-full flex-shrink-0 mt-1.5 self-stretch min-h-4"></div>
+                <div>
+                  <p class="font-medium text-gray-900 dark:text-gray-100 text-sm leading-snug">{pub.title}</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{pub.authors}</p>
+                  <p class="text-xs font-semibold text-primary mt-0.5">{pub.venue}</p>
+                  {pub.topicsList.length > 0 && (
+                    <div class="flex flex-wrap gap-1 mt-1.5">
+                      {pub.topicsList.map((t: string) => (
+                        <span class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded">{t}</span>
+                      ))}
+                    </div>
+                  )}
+                  {pub.links && (
+                    <div class="flex gap-3 mt-1.5 text-xs font-medium">
+                      {pub.links.pdf     && <a href={pub.links.pdf}     class="text-primary hover:underline">[PDF]</a>}
+                      {pub.links.arxiv   && <a href={pub.links.arxiv}   target="_blank" rel="noopener" class="text-primary hover:underline">[arXiv]</a>}
+                      {pub.links.code    && <a href={pub.links.code}    target="_blank" rel="noopener" class="text-primary hover:underline">[Code]</a>}
+                      {pub.links.project && <a href={pub.links.project} class="text-primary hover:underline">[Project]</a>}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <p id="pub-empty" class="hidden text-sm text-gray-400 dark:text-gray-600 text-center py-12">
+      No publications match the selected filters.
+    </p>
+
+  </div>
+</Layout>
+
+<script>
+  function initFilters() {
+    const selAuthor = document.getElementById('filter-author') as HTMLSelectElement | null;
+    const selYear   = document.getElementById('filter-year')   as HTMLSelectElement | null;
+    const selVenue  = document.getElementById('filter-venue')  as HTMLSelectElement | null;
+    const selTopic  = document.getElementById('filter-topic')  as HTMLSelectElement | null;
+    const countEl   = document.getElementById('pub-count');
+    const clearBtn  = document.getElementById('clear-filters');
+    const emptyEl   = document.getElementById('pub-empty');
+    if (!selAuthor || !selYear || !selVenue || !selTopic) return;
+
+    function applyFilters() {
+      const author = selAuthor!.value;
+      const year   = selYear!.value;
+      const venue  = selVenue!.value;
+      const topic  = selTopic!.value;
+
+      const items = document.querySelectorAll<HTMLElement>('.pub-item');
+      let visible = 0;
+
+      items.forEach(item => {
+        const authors = item.dataset.authors ?? '';
+        const matchAuthor = !author || authors.split('|').includes(author);
+        const matchYear   = !year   || item.dataset.year  === year;
+        const matchVenue  = !venue  || item.dataset.venue === venue;
+        const topics = item.dataset.topics ?? '';
+        const matchTopic  = !topic  || topics.split('|').includes(topic);
+
+        const show = matchAuthor && matchYear && matchVenue && matchTopic;
+        item.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+
+      document.querySelectorAll<HTMLElement>('.year-block').forEach(block => {
+        const hasVisible = Array.from(block.querySelectorAll<HTMLElement>('.pub-item'))
+          .some(el => el.style.display !== 'none');
+        block.style.display = hasVisible ? '' : 'none';
+      });
+
+      const total = items.length;
+      if (countEl) {
+        countEl.textContent = visible < total
+          ? `Showing ${visible} of ${total} papers`
+          : `${total} papers`;
+      }
+      const anyActive = author || year || venue || topic;
+      clearBtn?.classList.toggle('hidden', !anyActive);
+      if (emptyEl) emptyEl.classList.toggle('hidden', visible > 0);
+    }
+
+    function clearFilters() {
+      selAuthor!.value = '';
+      selYear!.value   = '';
+      selVenue!.value  = '';
+      selTopic!.value  = '';
+      applyFilters();
+    }
+
+    selAuthor.addEventListener('change', applyFilters);
+    selYear.addEventListener('change',   applyFilters);
+    selVenue.addEventListener('change',  applyFilters);
+    selTopic.addEventListener('change',  applyFilters);
+    clearBtn?.addEventListener('click',  clearFilters);
+
+    applyFilters();
+  }
+
+  initFilters();
+  document.addEventListener('astro:after-swap', initFilters);
+</script>

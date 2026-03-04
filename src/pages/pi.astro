@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readFileSync } from 'fs';
+import yaml from 'js-yaml';
+import { join } from 'path';
+
+const pi = yaml.load(
+  readFileSync(join(process.cwd(), 'src/data/pi.yaml'), 'utf-8')
+) as any;
+---
+<Layout title={`${pi.name} — MLR Lab`} active="pi">
+  <div class="max-w-5xl mx-auto px-6 py-12">
+
+    <div class="flex flex-col sm:flex-row gap-10 mb-14">
+      <div class="flex-shrink-0">
+        <img
+          src={pi.photo}
+          alt={pi.name}
+          class="w-52 h-64 object-cover bg-gray-100 dark:bg-gray-800"
+          onerror="this.style.background=''"
+        />
+      </div>
+      <div class="flex-1">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-1">{pi.name}</h1>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">{pi.department} · {pi.affiliation}</p>
+
+        <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-6">
+          <div class="flex items-center gap-2">
+            <span class="i-ph-map-pin-bold w-4 h-4 text-gray-400 dark:text-gray-600"></span>
+            {pi.affiliation}
+          </div>
+          {pi.phone && (
+            <div class="flex items-center gap-2">
+              <span class="i-ph-phone-bold w-4 h-4 text-gray-400 dark:text-gray-600"></span>
+              {pi.phone}
+            </div>
+          )}
+          <div class="flex items-center gap-2">
+            <span class="i-ph-envelope-bold w-4 h-4 text-gray-400 dark:text-gray-600"></span>
+            <a href={`mailto:${pi.email}`} class="hover:text-primary transition-colors">{pi.email}</a>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 mb-6">
+          {pi.links?.github && (
+            <a href={pi.links.github} target="_blank" rel="noopener" title="GitHub"
+               class="text-gray-400 dark:text-gray-600 hover:text-primary dark:hover:text-primary transition-colors">
+              <span class="i-ph-github-logo-bold w-5 h-5 block"></span>
+            </a>
+          )}
+          {pi.links?.twitter && (
+            <a href={pi.links.twitter} target="_blank" rel="noopener" title="Twitter / X"
+               class="text-gray-400 dark:text-gray-600 hover:text-primary dark:hover:text-primary transition-colors">
+              <span class="i-ph-twitter-logo-bold w-5 h-5 block"></span>
+            </a>
+          )}
+          {pi.links?.linkedin && (
+            <a href={pi.links.linkedin} target="_blank" rel="noopener" title="LinkedIn"
+               class="text-gray-400 dark:text-gray-600 hover:text-primary dark:hover:text-primary transition-colors">
+              <span class="i-ph-linkedin-logo-bold w-5 h-5 block"></span>
+            </a>
+          )}
+        </div>
+
+        {pi.links?.scholar && (
+          <a href={pi.links.scholar} target="_blank" rel="noopener"
+             class="inline-block px-5 py-2 rounded-full border-2 border-primary text-primary text-sm font-semibold hover:bg-primary hover:text-white transition-colors duration-150">
+            Google Scholar
+          </a>
+        )}
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-50 mb-5 pb-2 border-b border-gray-200 dark:border-gray-800">News</h2>
+        <div class="space-y-4">
+          {pi.news.map((item: any) => (
+            <div class="flex gap-4">
+              <span class="text-xs font-mono text-muted w-28 flex-shrink-0 pt-0.5">{item.date}</span>
+              <div class="w-px bg-gray-200 dark:bg-gray-800 flex-shrink-0"></div>
+              <p class="text-sm text-gray-700 dark:text-gray-300">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-50 mb-5 pb-2 border-b border-gray-200 dark:border-gray-800">Education</h2>
+        <div class="space-y-4">
+          {pi.education.map((item: any) => (
+            <div class="flex gap-4">
+              <span class="text-xs font-mono text-muted w-12 flex-shrink-0 pt-0.5">{item.year}</span>
+              <div class="w-px bg-gray-200 dark:bg-gray-800 flex-shrink-0"></div>
+              <div>
+                <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">{item.degree}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-500">{item.institution}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-50 mt-10 mb-5 pb-2 border-b border-gray-200 dark:border-gray-800">Bio</h2>
+        <div class="space-y-3">
+          {pi.bio.map((para: string) => (
+            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{para}</p>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>

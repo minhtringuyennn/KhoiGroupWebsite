@@ -1,0 +1,188 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title?: string;
+  description?: string;
+  active?: string;
+}
+const {
+  title = "MLR Lab",
+  description = "Machine Learning & Robotics Lab",
+  active = "",
+} = Astro.props;
+
+const navLinks = [
+  { href: "/",             label: "Home",         key: "home" },
+  { href: "/pi",           label: "PI",           key: "pi" },
+  { href: "/research",     label: "Research",     key: "research" },
+  { href: "/publications", label: "Publications", key: "publications" },
+  { href: "/team",         label: "Team",         key: "team" },
+  { href: "/resources",    label: "Resources",    key: "resources" },
+  { href: "/opening",      label: "Opening",      key: "opening" },
+];
+---
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <ViewTransitions />
+  <style>
+    * { box-sizing: border-box; }
+
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 200ms ease;
+    }
+    #mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+
+    body { transition: background-color 200ms ease, color 200ms ease; }
+  </style>
+
+  <script is:inline>
+    (function () {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+</head>
+<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-950 min-h-screen flex flex-col">
+
+  <header class="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-6 flex items-center justify-between h-14">
+      <a href="/" class="flex-shrink-0">
+        <div class="bg-primary text-white font-bold text-sm px-2.5 py-1 tracking-widest uppercase">MLR</div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6">
+        <ul class="flex gap-6">
+          {navLinks.map(link => (
+            <li>
+              <a
+                href={link.href}
+                class={`text-sm transition-colors duration-150 ${
+                  active === link.key
+                    ? 'text-primary font-semibold'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary'
+                }`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <button id="theme-btn" aria-label="Toggle dark mode"
+          class="p-1.5 rounded text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-150">
+          <span id="theme-icon-sun"  class="i-ph-sun-bold  w-4 h-4 block hidden"></span>
+          <span id="theme-icon-moon" class="i-ph-moon-bold w-4 h-4 block hidden"></span>
+        </button>
+      </nav>
+
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-btn-mobile" aria-label="Toggle dark mode"
+          class="p-2 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
+          <span id="theme-icon-sun-m"  class="i-ph-sun-bold  w-4 h-4 block hidden"></span>
+          <span id="theme-icon-moon-m" class="i-ph-moon-bold w-4 h-4 block hidden"></span>
+        </button>
+        <button id="mobile-menu-btn" aria-label="Toggle menu"
+          class="flex flex-col gap-1.5 p-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+          <span class="block w-5 h-0.5 bg-current transition-all duration-200" id="bar1"></span>
+          <span class="block w-5 h-0.5 bg-current transition-all duration-200" id="bar2"></span>
+          <span class="block w-5 h-0.5 bg-current transition-all duration-200" id="bar3"></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-950">
+      <ul class="py-2 px-6">
+        {navLinks.map(link => (
+          <li>
+            <a
+              href={link.href}
+              class={`block py-2.5 text-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-150 ${
+                active === link.key
+                  ? 'text-primary font-semibold'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-primary'
+              }`}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <footer class="border-t border-gray-100 dark:border-gray-800 py-8 mt-16 text-center text-xs text-gray-400 dark:text-gray-600">
+    © {new Date().getFullYear()} Machine Learning & Robotics Lab
+  </footer>
+
+  <script>
+    function syncTheme() {
+      const dark = document.documentElement.classList.contains('dark');
+      document.getElementById('theme-icon-sun')  ?.classList.toggle('hidden', dark);
+      document.getElementById('theme-icon-moon') ?.classList.toggle('hidden', !dark);
+      document.getElementById('theme-icon-sun-m') ?.classList.toggle('hidden', dark);
+      document.getElementById('theme-icon-moon-m')?.classList.toggle('hidden', !dark);
+    }
+
+    function toggleTheme() {
+      const nowDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+      syncTheme();
+    }
+
+    function initUI() {
+      syncTheme();
+      document.getElementById('theme-btn')       ?.addEventListener('click', toggleTheme);
+      document.getElementById('theme-btn-mobile')?.addEventListener('click', toggleTheme);
+
+      const btn  = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const bar1 = document.getElementById('bar1');
+      const bar2 = document.getElementById('bar2');
+      const bar3 = document.getElementById('bar3');
+      let open = false;
+
+      function setOpen(val: boolean) {
+        open = val;
+        menu?.classList.toggle('open', open);
+        if (bar1 && bar2 && bar3) {
+          bar1.style.transform = open ? 'translateY(8px) rotate(45deg)' : '';
+          bar2.style.opacity   = open ? '0' : '1';
+          bar3.style.transform = open ? 'translateY(-8px) rotate(-45deg)' : '';
+        }
+      }
+
+      btn?.addEventListener('click', () => setOpen(!open));
+      menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    }
+
+    document.addEventListener('astro:before-swap', (e: any) => {
+      if (document.documentElement.classList.contains('dark')) {
+        e.newDocument.documentElement.classList.add('dark');
+      }
+    });
+
+    initUI();
+    document.addEventListener('astro:after-swap', initUI);
+  </script>
+
+</body>
+</html>
