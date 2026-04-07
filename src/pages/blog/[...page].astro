@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import type { GetStaticPathsOptions } from 'astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return paginate(posts, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+const posts = page.data;
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+---
+<Layout title="Blog — MLR Lab" active="blog">
+  <div class="max-w-3xl mx-auto px-6 py-12">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Blog</h1>
+      <p class="text-gray-500 dark:text-gray-400">
+        Research updates, tutorials, and perspectives from the MLR Lab.
+      </p>
+    </div>
+
+    {posts.length === 0 && (
+      <p class="text-gray-500 dark:text-gray-400">No posts yet. Check back soon!</p>
+    )}
+
+    <div class="divide-y divide-gray-100 dark:divide-gray-800">
+      {posts.map(post => (
+        <article class="py-10">
+          <h2 class="text-xl font-semibold mb-2">
+            <a href={`/blog/${post.id.replace(/\.md$/, '')}`}
+               class="text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent transition-colors">
+              {post.data.title}
+            </a>
+          </h2>
+
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 dark:text-gray-400 mb-3">
+            <span>{post.data.authors.join(', ')}</span>
+            <span class="text-gray-300 dark:text-gray-700">·</span>
+            <time datetime={post.data.date.toISOString()}>
+              {formatDate(post.data.date)}
+            </time>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <>
+                <span class="text-gray-300 dark:text-gray-700">·</span>
+                <div class="flex flex-wrap gap-1.5">
+                  {post.data.tags.map((tag: string) => (
+                    <span class="px-2 py-0.5 text-xs bg-primary/5 text-primary rounded-full border border-primary/15">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
+          {post.data.image && (
+            <div class="mb-4 rounded-lg overflow-hidden">
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="w-full h-48 object-cover"
+              />
+            </div>
+          )}
+
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+            {post.data.excerpt}
+          </p>
+
+          <a href={`/blog/${post.id.replace(/\.md$/, '')}`}
+             class="text-sm font-medium text-primary hover:text-accent transition-colors">
+            Continue reading →
+          </a>
+        </article>
+      ))}
+    </div>
+
+    {(page.url.prev || page.url.next) && (
+      <nav class="flex justify-between items-center pt-8 mt-8 border-t border-gray-100 dark:border-gray-800">
+        {page.url.prev
+          ? <a href={page.url.prev}
+               class="flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors">
+              <span class="i-ph-arrow-left-bold w-4 h-4"></span> Newer posts
+            </a>
+          : <span />
+        }
+        <span class="text-sm text-gray-400 dark:text-gray-600">
+          Page {page.currentPage} of {page.lastPage}
+        </span>
+        {page.url.next
+          ? <a href={page.url.next}
+               class="flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors">
+              Older posts <span class="i-ph-arrow-right-bold w-4 h-4"></span>
+            </a>
+          : <span />
+        }
+      </nav>
+    )}
+  </div>
+</Layout>

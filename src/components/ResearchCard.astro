@@ -9,7 +9,7 @@ const { title, description, image, tags = [] } = Astro.props;
 ---
 <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white">
   {image && (
-    <div class="h-36 bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden">
+    <div class="h-36 bg-gradient-to-br from-primary/5 to-primary/10 overflow-hidden">
       <img
         src={image}
         alt={title}
@@ -24,7 +24,7 @@ const { title, description, image, tags = [] } = Astro.props;
     {tags.length > 0 && (
       <div class="flex flex-wrap gap-1.5 mt-3">
         {tags.map(tag => (
-          <span class="px-2 py-0.5 text-xs bg-blue-50 text-primary rounded-full border border-blue-100">
+          <span class="px-2 py-0.5 text-xs bg-primary/5 text-primary rounded-full border border-primary/15">
             {tag}
           </span>
         ))}

@@ -1,5 +1,8 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import { readFileSync } from 'fs';
+import yaml from 'js-yaml';
+import { join } from 'path';
 
 interface Props {
   title?: string;
@@ -12,15 +15,21 @@ const {
   active = "",
 } = Astro.props;
 
-const navLinks = [
+const pagesConfig = yaml.load(
+  readFileSync(join(process.cwd(), 'src/data/pages.yaml'), 'utf-8')
+) as Record<string, boolean>;
+
+const allNavLinks = [
   { href: "/",             label: "Home",         key: "home" },
   { href: "/pi",           label: "PI",           key: "pi" },
   { href: "/research",     label: "Research",     key: "research" },
   { href: "/publications", label: "Publications", key: "publications" },
   { href: "/team",         label: "Team",         key: "team" },
   { href: "/resources",    label: "Resources",    key: "resources" },
+  { href: "/blog",         label: "Blog",         key: "blog" },
   { href: "/opening",      label: "Opening",      key: "opening" },
 ];
+const navLinks = allNavLinks.filter(link => pagesConfig[link.key] !== false);
 ---
 <!DOCTYPE html>
 <html lang="en" style="scroll-behavior: smooth;">
@@ -74,7 +83,7 @@ const navLinks = [
                 class={`text-sm transition-colors duration-150 ${
                   active === link.key
                     ? 'text-primary font-semibold'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent'
                 }`}
               >
                 {link.label}
@@ -84,7 +93,7 @@ const navLinks = [
         </ul>
 
         <button id="theme-btn" aria-label="Toggle dark mode"
-          class="p-1.5 rounded text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-150">
+          class="p-1.5 rounded text-gray-500 dark:text-gray-400 hover:text-accent dark:hover:text-accent hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-150">
           <span id="theme-icon-sun"  class="i-ph-sun-bold  w-4 h-4 block hidden"></span>
           <span id="theme-icon-moon" class="i-ph-moon-bold w-4 h-4 block hidden"></span>
         </button>
@@ -92,12 +101,12 @@ const navLinks = [
 
       <div class="flex items-center gap-2 md:hidden">
         <button id="theme-btn-mobile" aria-label="Toggle dark mode"
-          class="p-2 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
+          class="p-2 text-gray-500 dark:text-gray-400 hover:text-accent transition-colors">
           <span id="theme-icon-sun-m"  class="i-ph-sun-bold  w-4 h-4 block hidden"></span>
           <span id="theme-icon-moon-m" class="i-ph-moon-bold w-4 h-4 block hidden"></span>
         </button>
         <button id="mobile-menu-btn" aria-label="Toggle menu"
-          class="flex flex-col gap-1.5 p-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+          class="flex flex-col gap-1.5 p-2 text-gray-600 dark:text-gray-400 hover:text-accent transition-colors">
           <span class="block w-5 h-0.5 bg-current transition-all duration-200" id="bar1"></span>
           <span class="block w-5 h-0.5 bg-current transition-all duration-200" id="bar2"></span>
           <span class="block w-5 h-0.5 bg-current transition-all duration-200" id="bar3"></span>
@@ -114,7 +123,7 @@ const navLinks = [
               class={`block py-2.5 text-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-150 ${
                 active === link.key
                   ? 'text-primary font-semibold'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-primary'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-accent'
               }`}
             >
               {link.label}

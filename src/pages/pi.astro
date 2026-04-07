@@ -5,6 +5,11 @@ import yaml from 'js-yaml';
 import { join } from 'path';
 import { placeholderSvg, initials } from '../utils/placeholder';
 
+const pagesConfig = yaml.load(
+  readFileSync(join(process.cwd(), 'src/data/pages.yaml'), 'utf-8')
+) as Record<string, boolean>;
+if (pagesConfig.pi === false) return Astro.redirect('/');
+
 const pi = yaml.load(
   readFileSync(join(process.cwd(), 'src/data/pi.yaml'), 'utf-8')
 ) as any;

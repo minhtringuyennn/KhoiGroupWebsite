@@ -10,6 +10,9 @@ function loadYaml(file: string) {
   return yaml.load(readFileSync(join(dataDir, file), 'utf-8'));
 }
 
+const pagesConfig = loadYaml('pages.yaml') as Record<string, boolean>;
+if (pagesConfig.team === false) return Astro.redirect('/');
+
 const members = loadYaml('members.yaml') as any[];
 const group   = loadYaml('group.yaml')   as any;
 

@@ -4,6 +4,11 @@ import { readFileSync } from 'fs';
 import yaml from 'js-yaml';
 import { join } from 'path';
 
+const pagesConfig = yaml.load(
+  readFileSync(join(process.cwd(), 'src/data/pages.yaml'), 'utf-8')
+) as Record<string, boolean>;
+if (pagesConfig.research === false) return Astro.redirect('/');
+
 const research = yaml.load(
   readFileSync(join(process.cwd(), 'src/data/research.yaml'), 'utf-8')
 ) as any;
