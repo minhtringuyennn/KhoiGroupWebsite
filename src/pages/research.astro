@@ -7,7 +7,7 @@ import { join } from 'path';
 const pagesConfig = yaml.load(
   readFileSync(join(process.cwd(), 'src/data/pages.yaml'), 'utf-8')
 ) as Record<string, boolean>;
-if (pagesConfig.research === false) return Astro.redirect('/');
+if (pagesConfig.research === false) return Astro.redirect(import.meta.env.BASE_URL);
 
 const research = yaml.load(
   readFileSync(join(process.cwd(), 'src/data/research.yaml'), 'utf-8')

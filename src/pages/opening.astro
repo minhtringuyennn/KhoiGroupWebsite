@@ -10,7 +10,7 @@ function loadYaml(file: string) {
 }
 
 const pagesConfig = loadYaml('pages.yaml') as Record<string, boolean>;
-if (pagesConfig.opening === false) return Astro.redirect('/');
+if (pagesConfig.opening === false) return Astro.redirect(import.meta.env.BASE_URL);
 
 const group   = loadYaml('group.yaml')   as any;
 const opening = loadYaml('opening.yaml') as any;
