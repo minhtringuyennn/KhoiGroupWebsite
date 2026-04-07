@@ -20,7 +20,11 @@ for (const item of news) {
 const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
 
 const categories: any[] = group.news_categories ?? [];
-const heroLinks: any[]  = group.hero_links ?? [];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const heroLinks: any[]  = (group.hero_links ?? []).map((l: any) => ({
+  ...l,
+  href: l.href?.startsWith('/') ? `${base}${l.href}` : l.href,
+}));
 ---
 <Layout title={group.name} description={group.tagline} active="home">
 
