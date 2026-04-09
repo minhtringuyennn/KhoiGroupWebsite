@@ -1,21 +1,20 @@
-name: "Machine Learning & Robotics Lab"
-short_name: "MLR Lab"
-tagline: "Advancing the Frontiers of Embodied Intelligence"
+name: "DeepLEAD Research Group"
+short_name: "DeepLEAD"
+tagline: "Deep Models, Learning, and Adaptation"
 description: |
-  We are a research group at Carnegie Mellon University's School of Computer Science,
-  working at the intersection of machine learning, computer vision, and robotics.
-  Our mission is to develop intelligent systems that can perceive, reason, and act
-  in the physical world.
+  We are a research group at the National University of Singapore's Department of Mathematics,
+  led by Dr. Tan Minh Nguyen. Our research focuses on three important components of modern AI:
+  Deep Models, Learning, and Adaptation (DeepLEAD).
 
-  Our lab combines theoretical foundations with practical applications, collaborating
-  closely with industry and other academic groups to tackle fundamental challenges
-  in embodied AI.
-pi_name: "Dr. Jane Smith"
-institution: "Carnegie Mellon University"
-department: "School of Computer Science"
-contact_email: "mlrlab@cs.cmu.edu"
-twitter: "https://twitter.com/mlrlab_cmu"
-github: "https://github.com/mlrlab-cmu"
+  We leverage tools from machine learning, optimization, differential equations, statistics,
+  and algebra to understand and advance these three components, aiming to achieve Robust,
+  Interpretable, Scalable, and Efficient AI (RISE AI).
+pi_name: "Dr. Tan Minh Nguyen"
+institution: "National University of Singapore"
+department: "Department of Mathematics"
+contact_email: "matntm@nus.edu.sg"
+twitter: ""
+github: "https://github.com/minhtannguyen"
 
 hero_links:
   - label: "Meet the Team"
@@ -44,17 +43,17 @@ news_categories:
 
 team_stats:
   - icon: i-ph-graduation-cap-bold
-    value: "3+"
-    label: "Ph.D. Fellowships (NSF, NDSEG, etc.)"
+    value: "85+"
+    label: "Publications (NeurIPS, ICML, ICLR, etc.)"
   - icon: i-ph-star-bold
-    value: "5+"
-    label: "Best Paper Awards (NeurIPS, CVPR, CoRL)"
-  - icon: i-ph-trophy-bold
-    value: "4+"
-    label: "Competition Prizes at CVPR, ICCV"
-  - icon: i-ph-buildings-bold
-    value: "2+"
-    label: "Alumni in Tenure-Track Faculty Positions"
-  - icon: i-ph-briefcase-bold
     value: "10+"
-    label: "Alumni as Research Scientists in Industry"
+    label: "Notable/Oral/Spotlight Papers"
+  - icon: i-ph-trophy-bold
+    value: "3+"
+    label: "Major Fellowships (CIFellows, NSF GRFP)"
+  - icon: i-ph-flask-bold
+    value: "5+"
+    label: "Journal Publications"
+  - icon: i-ph-briefcase-bold
+    value: "Multiple"
+    label: "Industry Collaborations (Amazon, NVIDIA)"

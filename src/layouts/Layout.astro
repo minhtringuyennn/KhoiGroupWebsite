@@ -10,8 +10,8 @@ interface Props {
   active?: string;
 }
 const {
-  title = "MLR Lab",
-  description = "Machine Learning & Robotics Lab",
+  title = "DeepLEAD Research Group",
+  description = "Deep Models, Learning, and Adaptation Research Group",
   active = "",
 } = Astro.props;
 
@@ -72,7 +72,7 @@ const navLinks = allNavLinks.filter(link => pagesConfig[link.key] !== false);
   <header class="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-6 flex items-center justify-between h-14">
       <a href={`${base}/`} class="flex-shrink-0">
-        <div class="bg-primary text-white font-bold text-sm px-2.5 py-1 tracking-widest uppercase">MLR</div>
+        <div class="bg-primary text-white font-bold text-sm px-2.5 py-1 tracking-widest uppercase">DeepLEAD</div>
       </a>
 
       <nav class="hidden md:flex items-center gap-6">
@@ -140,7 +140,7 @@ const navLinks = allNavLinks.filter(link => pagesConfig[link.key] !== false);
   </main>
 
   <footer class="border-t border-gray-100 dark:border-gray-800 py-8 mt-16 text-center text-xs text-gray-400 dark:text-gray-600">
-    © {new Date().getFullYear()} Machine Learning & Robotics Lab
+    © {new Date().getFullYear()} DeepLEAD Research Group
   </footer>
 
   <script>

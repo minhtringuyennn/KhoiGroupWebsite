@@ -27,13 +27,29 @@ const allTopics = [...new Set(
   publications.flatMap((p: any) => (p.topics ?? []) as string[])
 )].sort() as string[];
 
-const pubs = publications.map((p: any) => ({
-  ...p,
-  venueShort: (p.venue as string).replace(/\s+\d{4}$/, '').trim(),
-  authorsAttr: (p.authors as string).split(',').map((a: string) => a.trim()).join('|'),
-  topicsAttr: ((p.topics ?? []) as string[]).join('|'),
-  topicsList: (p.topics ?? []) as string[],
-}));
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const pubs = publications.map((p: any) => {
+  const links = p.links || {};
+  const fixedLinks: any = {};
+
+  for (const [key, url] of Object.entries(links)) {
+    if (typeof url === 'string' && url.startsWith('/')) {
+      fixedLinks[key] = `${base}${url}`;
+    } else {
+      fixedLinks[key] = url;
+    }
+  }
+
+  return {
+    ...p,
+    links: fixedLinks,
+    venueShort: (p.venue as string).replace(/\s+\d{4}$/, '').trim(),
+    authorsAttr: (p.authors as string).split(',').map((a: string) => a.trim()).join('|'),
+    topicsAttr: ((p.topics ?? []) as string[]).join('|'),
+    topicsList: (p.topics ?? []) as string[],
+  };
+});
 
 const byYear: Record<number, typeof pubs> = {};
 for (const p of pubs) {

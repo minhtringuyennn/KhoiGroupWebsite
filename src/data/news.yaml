@@ -1,79 +1,183 @@
-- date: "Feb 2025"
+# 2025 News
+- date: "Sep 2025"
   year: 2025
   category: research
   items:
-    - "3 CVPR'25 papers (scene understanding + neural grasping + embodied nav) accepted"
-    - "1 IEEE TPAMI journal paper on implicit representations accepted"
+    - "4 papers accepted at NeurIPS 2025, including 1 oral and 1 spotlight presentation"
+    - "Oral: On Linear Mode Connectivity of Mixture-of-Experts Architectures"
+    - "Spotlight: Angular Steering - Behavior Control via Rotation in Activation Space"
+
+- date: "Jul 2025"
+  year: 2025
+  category: research
+  items:
+    - "1 paper accepted at COLM 2025: The Blessing and Curse of Dimensionality in Safety Alignment"
+
+- date: "May 2025"
+  year: 2025
+  category: research
+  items:
+    - "4 papers accepted at ICML 2025 on optimal transport, neural functional networks, and robust fine-tuning"
+    - "Tree-Sliced Wasserstein Distance: A Geometric Perspective"
+    - "Equivariant Polynomial Functional Networks"
 
 - date: "Jan 2025"
   year: 2025
   category: research
   items:
-    - "4 ICLR'25 papers (diffusion policy + world models + NeRF grasp + LLM planning) accepted"
-    - "1 ICRA'25 paper on deformable object manipulation accepted"
+    - "7 papers accepted at ICLR 2025, including 1 spotlight"
+    - "Spotlight: Demystifying the Token Dynamics of Deep Selective State Space Models"
+    - "Topics include MoE architectures, neural functional networks, model merging, and transformers"
 
-- date: "Dec 2024"
-  year: 2024
-  category: awards
-  items:
-    - "Prof. Smith receives NSF CAREER Award — congratulations!"
-    - "Best Paper Award at CoRL 2024 for DiffGrasp"
-
-- date: "Nov 2024"
-  year: 2024
-  category: events
-  items:
-    - "Prof. Smith gives invited talk at MIT Robotics Seminar"
-    - "Lab presents 3 papers at CoRL 2024"
-
+# 2024 News
 - date: "Sep 2024"
   year: 2024
   category: research
   items:
-    - "3 NeurIPS'24 papers accepted — great work by the whole team!"
-    - "Welcome to new PhD student Kevin Park!"
-
-- date: "Jun 2024"
-  year: 2024
-  category: research
-  items:
-    - "2 CVPR'24 papers accepted (SceneFlow + RoboGen)"
+    - "4 papers accepted at NeurIPS 2024 on sparse MoE, self-attention analysis, and neural functional networks"
+    - "MomentumSMoE: Integrating Momentum into Sparse Mixture of Experts"
+    - "Unveiling the Hidden Structure of Self-Attention via Kernel Principal Component Analysis"
+    - "Elliptical Attention"
 
 - date: "May 2024"
   year: 2024
-  category: events
+  category: research
   items:
-    - "James Brown successfully defends his PhD dissertation — congrats Dr. Brown! Now at Google DeepMind"
-    - "Organizing Workshop on Learning for Robot Manipulation at ICRA 2024"
+    - "2 papers accepted at ICML 2024: PIDformer (Transformer Meets Control Theory) and Neural Collapse analysis"
+
+- date: "Apr 2024"
+  year: 2024
+  category: research
+  items:
+    - "1 paper accepted at UAI 2024: Revisiting Kernel Attention with Correlated Gaussian Process Representation"
 
 - date: "Jan 2024"
   year: 2024
   category: research
   items:
-    - "NeRF-Grasp accepted at ICLR 2024"
+    - "2 papers accepted at ICLR 2024 and AISTATS 2024"
+    - "Beyond Vanilla Variational Autoencoders (ICLR)"
+    - "From Coupled Oscillators to Graph Neural Networks (AISTATS)"
 
-- date: "Dec 2023"
-  year: 2023
-  category: awards
-  items:
-    - "Received the Amazon Research Award"
-
+# 2023 News
 - date: "Sep 2023"
-  year: 2023
-  category: events
-  items:
-    - "Welcome to new PhD student Maria Rodriguez!"
-
-- date: "Jun 2023"
   year: 2023
   category: research
   items:
-    - "GROOT accepted at NeurIPS 2023"
-    - "Perceive-Predict-Plan accepted at ICRA 2023"
+    - "3 papers accepted at NeurIPS 2023 on transformers and graph neural networks"
+    - "Mitigating Over-smoothing in Transformers via Regularized Nonlocal Functionals"
+    - "Designing Robust Transformers using Robust Kernel Density Estimation"
 
-- date: "Mar 2023"
+- date: "May 2023"
   year: 2023
+  category: research
+  items:
+    - "2 papers accepted at ICML 2023"
+    - "Revisiting Over-smoothing and Over-squashing using Ollivier-Ricci Curvature"
+    - "Neural Collapse in Deep Linear Networks: From Balanced to Imbalanced Data"
+
+- date: "Jan 2023"
+  year: 2023
+  category: research
+  items:
+    - "3 papers accepted at ICLR 2023"
+    - "Notable top-25%: A Primal-Dual Framework for Transformers and Neural Networks"
+    - "Hierarchical Sliced Wasserstein Distance"
+
+- date: "Jan 2023"
+  year: 2023
+  category: research
+  items:
+    - "1 paper accepted at ICASSP 2023 (notable top-3%): A Probabilistic Framework for Pruning Transformers"
+
+- date: "2023"
+  year: 2023
+  category: research
+  items:
+    - "Journal paper published in JMLR: A Bayesian Perspective of Convolutional Neural Networks"
+
+# 2022 News
+- date: "Sep 2022"
+  year: 2022
+  category: research
+  items:
+    - "3 papers accepted at NeurIPS 2022"
+    - "FourierFormer: Transformer Meets Generalized Fourier Integral Theorem"
+    - "Improving Transformer with an Admixture of Attention Heads"
+    - "Improving Neural ODEs with Nesterov's Accelerated Gradient Method"
+
+- date: "May 2022"
+  year: 2022
+  category: research
+  items:
+    - "1 paper accepted at ICML 2022: Improving Transformers with Probabilistic Attention Keys"
+
+- date: "Jan 2022"
+  year: 2022
+  category: research
+  items:
+    - "1 paper accepted at ICLR 2022: GRAND++ (Graph Neural Diffusion with a Source Term)"
+
+- date: "2022"
+  year: 2022
+  category: research
+  items:
+    - "2 journal papers published in SIAM Journal on Imaging Sciences and Research in the Mathematical Sciences"
+
+# 2021 News
+- date: "Sep 2021"
+  year: 2021
+  category: research
+  items:
+    - "2 papers accepted at NeurIPS 2021"
+    - "FMMformer: Efficient and Flexible Transformer via Decomposed Near-field and Far-field Attention"
+    - "Heavy Ball Neural Ordinary Differential Equations"
+
+# 2020 News
+- date: "Sep 2020"
+  year: 2020
+  category: research
+  items:
+    - "2 papers accepted at NeurIPS 2020"
+    - "MomentumRNN: Integrating Momentum into Recurrent Neural Networks"
+    - "Neural Networks with Recurrent Generative Feedback"
+
+- date: "2020"
+  year: 2020
+  category: events
+  items:
+    - "Organized the 1st Workshop on Integration of Deep Neural Models and Differential Equations at ICLR 2020"
+
+- date: "2020"
+  year: 2020
+  category: research
+  items:
+    - "Journal paper published in IEEE Journal of Selected Topics in Signal Processing"
+
+# 2019 News
+- date: "2019"
+  year: 2019
   category: talks
   items:
-    - "Prof. Smith gives keynote at ICLR 2023 Workshop on Robot Learning"
-    - "Invited talk at Stanford AI Lab"
+    - "Oral presentation at Deep Math Conference: Neural Rendering Model for Semi-Supervised Learning"
+
+# 2018 News
+- date: "Dec 2018"
+  year: 2018
+  category: talks
+  items:
+    - "Invited talk at the Deep Learning Theory Workshop at NeurIPS 2018"
+
+# 2017 News
+- date: "2017"
+  year: 2017
+  category: research
+  items:
+    - "Paper presented at Conference on Cognitive Computational Neuroscience (CCN)"
+
+# 2016 News
+- date: "Sep 2016"
+  year: 2016
+  category: research
+  items:
+    - "Paper accepted at NeurIPS 2016: Probabilistic Framework for Deep Learning"

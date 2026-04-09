@@ -3,6 +3,6 @@ pi: true
 research: true
 publications: true
 team: true
-resources: true
+resources: false
 opening: true
-blog: true
+blog: false
